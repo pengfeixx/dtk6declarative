@@ -13,6 +13,14 @@ LineEdit {
     readonly property bool isEchoMode: control.echoMode === TextInput.Normal
     property alias echoButtonVisible: echoButton.visible
 
+    function setCopyEnable(enable) {
+        control.copyMenuEnabled = enable
+    }
+
+    function setCutEnable(enable) {
+        control.cutMenuEnabled = enable
+    }
+
     function toggleEchoMode() {
         if (control.isEchoMode) {
             control.echoMode = TextInput.Password

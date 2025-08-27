@@ -9,6 +9,8 @@ import org.deepin.dtk.style 1.0 as DS
 
 T.TextField {
     id: control
+    property bool copyMenuEnabled: true
+    property bool cutMenuEnabled: true
     property D.Palette placeholderTextPalette: DS.Style.edit.placeholderText
     placeholderTextColor: D.ColorSelector.placeholderTextPalette
     property alias backgroundColor: panel.backgroundColor
@@ -77,14 +79,14 @@ T.TextField {
         {
             text: qsTr("Copy")
             onTriggered: control.copy()
-            enabled: control.selectedText.length && control.echoMode === TextInput.Normal
+            enabled: control.selectedText.length && control.echoMode === TextInput.Normal && control.copyMenuEnabled
         }
 
         MenuItem
         {
             text: qsTr("Cut")
             onTriggered: control.cut()
-            enabled: !control.readonly && control.selectedText.length && control.echoMode === TextInput.Normal
+            enabled: !control.readonly && control.selectedText.length && control.echoMode === TextInput.Normal && control.cutMenuEnabled
         }
 
         MenuItem
